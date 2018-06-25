@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 setup(
     name='PyIntern',
     version='0.1',
-    packages=find_packages(),
+    packages=find_packages(exclude='tests'),
     include_package_data=True,
     desciption='System to manage Interships',
     author='Lays Rodrigues',
