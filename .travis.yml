@@ -1,0 +1,12 @@
+language: python
+python:
+- '3.6'
+services:
+  - mysql
+env:
+  -DJANGO=2.0.4 DB=mysql
+before_script:
+  - mysql -e 'create database test;' -u root
+install: python setup.py -q install
+script:
+  - python PyIntern/manage.py test
