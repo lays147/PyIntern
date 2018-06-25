@@ -32,3 +32,13 @@ Open your browser and type:
 ```
 On the Django Admin you will see the models, where you can insert, change
 and delete a item into the models.
+
+#### Development
+To create a new submodule type:
+```bash
+python manage.py startapp app_name
+cd app_name
+mkdir tests
+mv tests.py tests/test_my_app_thing.py
+touch tests/__init__.py
+```
