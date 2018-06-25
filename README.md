@@ -1,4 +1,4 @@
-#### PyIntern
+#### PyIntern [![Build Status](https://travis-ci.org/lays147/PyIntern.svg?branch=master)](https://travis-ci.org/lays147/PyIntern)
 
 Application developed to help Institutions to
 offer intern opportunities to students of technology.
