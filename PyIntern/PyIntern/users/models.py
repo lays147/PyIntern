@@ -49,7 +49,6 @@ class Coordinator(User):
     """Coordinator."""
 
     cpf = models.CharField(max_length=11)
-    birth_date = models.DateField()
 
 
 class Company(User):
