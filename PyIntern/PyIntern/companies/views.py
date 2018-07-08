@@ -1,3 +1,4 @@
+"""views for companies"""
 from django.shortcuts import render, resolve_url as r
 from django.http import HttpResponseRedirect
 from PyIntern.users.models import Company
@@ -11,6 +12,16 @@ def home(request):
         request,
         'companies_home.html',
         {'user': 'Lays'},
+    )
+
+
+def list_companies(request):
+    """Return list of companies on the system."""
+    companies = Company.objects.all()
+    return render(
+        request,
+        'companies_list.html',
+        {'companies': companies},
     )
 
 
