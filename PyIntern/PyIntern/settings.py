@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'PyIntern.core',
     'PyIntern.users',
     'PyIntern.coordinators',
+    'PyIntern.companies',
 ]
 
 MIDDLEWARE = [

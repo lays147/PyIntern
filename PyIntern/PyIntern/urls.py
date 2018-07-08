@@ -21,4 +21,5 @@ urlpatterns = [
     re_path(r'^$', views.home, name='home'),
     path('admin/', admin.site.urls),
     path('coordinators/', include('PyIntern.coordinators.urls')),
+    path('companies/', include('PyIntern.companies.urls')),
 ]
