@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load templatefilters %}
+{% block content %}
+<section class="section">
+  <h1 class="title">Cadastrar Novo Coordenador</h1>
+  <form action="." method="POST">
+    {% csrf_token %}
+    {# Matrícula #}
+    <div class="field">
+      <label class="label">{{ form.registration.label }}</label>
+      <div class="control">
+        {{ form.registration|addclass:'input' }}
+      </div>
+      {% if form.registration.errors %}
+        <p class="help is-danger">{{ form.registration.errors }}</p>
+      {% endif %}
+    </div>
+    {# Nome #}
+    <div class="field">
+      <label class="label">{{ form.name.label }}</label>
+      <div class="control">
+        {{ form.name|addclass:'input' }}
+      </div>
+      {% if form.name.errors %}
+        <p class="help is-danger">{{ form.name.errors }}</p>
+      {% endif %}
+    </div>
+    {# E-Mail #}
+    <div class="field">
+      <label class="label">{{ form.email.label }}</label>
+      <div class="control">
+        {# <input class="input" type="email" placeholder="E-Mail"> #}
+        {{ form.email|addtype:'email' }}
+        {% if form.email.errors %}
+          <p class="help is-danger">O e-mail digitado é inválido.</p>
+        {% endif %}
+      </div>
+    </div>
+    {# Nome de Usuário #}
+    <div class="field">
+      <label class="label">{{ form.username.label }}</label>
+        {{ form.username|addclass:'input' }}
+      {% if form.username.errors %}
+        <p class="help is-danger">{{ form.username.errors }}</p>
+      {% endif %}
+    </div>
+    {# Telefone #}
+    <div class="field">
+      <label class="label">{{ form.phone.label }}</label>
+      <div class="control">
+        {{ form.phone|addclass:'input' }}
+      </div>
+      {% if form.phone.errors %}
+        <p class="help is-danger">{{ form.phone.errors }}</p>
+      {% endif %}
+    </div>
+    {# Endereço #}
+    <div class="field">
+      <label class="label">{{ form.address.label }} </label>
+      <div class="control">
+        {{ form.address|addclass:'input' }}
+      </div>
+      {% if form.address.errors %}
+        <p class="help is-danger">{{ form.address.errors }}</p>
+      {% endif %}
+    </div>
+    {# CPF #}
+    <div class="field">
+      <label class="label">{{ form.cpf.label }}</label>
+      <div class="control">
+        {{ form.cpf|addclass:'input' }}
+      </div>
+      {% if form.cpf.errors %}
+        <p class="help is-danger">O CPF digitado é inválido.</p>
+      {% endif %}
+    </div>
+      <p class="help">Formato: 01/01/1200</p>
+      {% if form.birth_date.errors %}
+        <p class="help is-danger">{{ form.birth_date.errors }}</p>
+      {% endif %}
+    </div>
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-link" type="submit">Cadastrar</button>
+      </div>
+      <div class="control">
+        <button class="button is-text">Cancelar</button>
+      </div>
+  </div>
+  </form>
+</section>
+{% endblock content %}
