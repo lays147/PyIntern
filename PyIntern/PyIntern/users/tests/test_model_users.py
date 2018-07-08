@@ -45,7 +45,6 @@ class CoordinatorModelTest(TestCase):
             address='Bourbon Street',
             username='lays147',
             cpf='12345678901',
-            birth_date='1992-09-17',
         )
         self.obj.save()
 
