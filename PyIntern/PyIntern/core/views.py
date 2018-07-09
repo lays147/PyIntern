@@ -21,4 +21,9 @@ def log_user(request):
         return render(request, 'index.html', {'error': True})
     else:
         login(request, auth)
-        return HttpResponseRedirect(r('coordinators_home'))
+        if auth.groups.filter(name='Coordinators').exists():
+            return HttpResponseRedirect(r('coordinators_home'))
+        elif auth.groups.filter(name='Companies').exists():
+            return HttpResponseRedirect(r('companies_home'))
+        elif auth.groups.filter(name='Students').exists():
+            return HttpResponseRedirect(r('students_home'))
