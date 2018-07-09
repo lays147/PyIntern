@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'PyIntern.users',
     'PyIntern.coordinators',
     'PyIntern.companies',
+    'PyIntern.students',
 ]
 
 MIDDLEWARE = [
@@ -124,4 +125,5 @@ STATIC_URL = '/static/'
 TEMPLATE_DIRS = [
     'PyIntern/coordinators/templates',
     'PyIntern/companies/templates',
+    'PyIntern/students/templates',
 ]

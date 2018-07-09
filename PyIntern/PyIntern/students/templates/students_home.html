@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1 class="title"> Bem-Vindo, {{ user }}</h1>
+  </div>
+  <br/>
+  <div class="columns">
+    <div class="column is-one-quarter">
+      <aside class="menu">
+        <p class="menu-label"> Alunos </p>
+        <ul class="menu-list">
+          <li><a>Editar Cadastro</a></li>
+        </ul>
+        <p class="menu-label">Vagas</p>
+        <ul class="menu-list">
+          <li><a href="#">Consultar</a></li>
+        </ul>
+      </aside>
+    </div>
+    <div class="column">
+      {% block extra_content %}
+      {% endblock extra_content %}
+    </div>
+  </div>
+</section>
+{% endblock content %}
