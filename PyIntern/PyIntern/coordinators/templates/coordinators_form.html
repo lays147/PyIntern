@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'coordinators_home.html' %}
 {% load templatefilters %}
-{% block content %}
+{% block extra_content %}
 <section class="section">
   <h1 class="title">Cadastrar Novo Coordenador</h1>
   <form action="." method="POST">
@@ -80,9 +80,9 @@
         <button class="button is-link" type="submit">Cadastrar</button>
       </div>
       <div class="control">
-        <button class="button is-text">Cancelar</button>
+        <a href="{% url 'coordinators_home' %}" class="button is-text">Cancelar</a>
       </div>
-  </div>
+    </div>
   </form>
 </section>
-{% endblock content %}
+{% endblock extra_content %}
