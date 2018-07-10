@@ -1,8 +1,9 @@
 """views for companies."""
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group
+from django.forms.models import model_to_dict
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, resolve_url as r
+from django.shortcuts import render, resolve_url as r, get_object_or_404
 from PyIntern.users.models import Company
 from .forms import CompanyForm
 
@@ -67,3 +68,17 @@ def create(request):
 
     Company.objects.create(**c_form)
     return HttpResponseRedirect(r('company_home'))
+
+
+@login_required
+def get_company(request, register):
+    """company file."""
+    company = get_object_or_404(Company, registration=register)
+    data = model_to_dict(company)
+    return render(
+        request,
+        'company_record.html',
+        {
+            'company': data,
+        },
+    )
