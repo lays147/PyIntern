@@ -127,3 +127,5 @@ TEMPLATE_DIRS = [
     'PyIntern/companies/templates',
     'PyIntern/students/templates',
 ]
+
+LOGIN_URL = '/'
