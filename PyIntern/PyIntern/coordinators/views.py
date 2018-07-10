@@ -1,20 +1,22 @@
 """views for coordinators module."""
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, resolve_url as r
-from django.http import HttpResponseRedirect, HttpResponse
 from PyIntern.users.models import Coordinator
 from .forms import CoordinatorsForm
 
 
-# Create your views here.
+@login_required
 def home(request):
     """Return home page."""
     return render(
         request,
         'coordinators_home.html',
-        {'user': 'Lays'},
+        {'user': request.user.first_name},
     )
 
 
+@login_required
 def list_coordinators(request):
     """Return list of coordinators on the system."""
     coordinators = Coordinator.objects.all()
@@ -25,6 +27,7 @@ def list_coordinators(request):
     )
 
 
+@login_required
 def new_register(request):
     """Handle request to the form."""
     if request.method == 'POST':
