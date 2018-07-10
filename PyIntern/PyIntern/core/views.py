@@ -1,6 +1,6 @@
 """views for core."""
 from django.shortcuts import render, resolve_url as r
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 
 
@@ -27,3 +27,9 @@ def log_user(request):
             return HttpResponseRedirect(r('companies_home'))
         elif auth.groups.filter(name='Students').exists():
             return HttpResponseRedirect(r('students_home'))
+
+
+def log_user_out(request):
+    """Logout the user."""
+    logout(request)
+    return HttpResponseRedirect(r('home'))

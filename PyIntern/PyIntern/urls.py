@@ -23,4 +23,5 @@ urlpatterns = [
     path('coordinators/', include('PyIntern.coordinators.urls')),
     path('companies/', include('PyIntern.companies.urls')),
     path('students/', include('PyIntern.students.urls')),
+    path('logout/', views.log_user_out, name='logout')
 ]
