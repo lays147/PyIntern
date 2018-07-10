@@ -1,5 +1,6 @@
 """views for companies."""
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User, Group
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, resolve_url as r
 from PyIntern.users.models import Company
@@ -49,8 +50,20 @@ def create(request):
     if not form.is_valid():
         return render(
             request,
-            'company_form.html',
+            'student_form.html',
             {'form': form},
         )
-    Company.objects.create(**form.cleaned_data)
-    return HttpResponseRedirect(r('list_coordinators'))
+    c_form = form.cleaned_data
+    user = User.objects.create_user(
+        username=c_form.get('username'),
+        password=c_form.get('password1'),
+        email=c_form.get('email'),
+        first_name=c_form.get('name').split()[0],
+    )
+    group = Group.objects.get(name='Companies')
+    user.groups.add(group)
+    c_form.pop('password1')
+    c_form.pop('password2')
+
+    Company.objects.create(**c_form)
+    return HttpResponseRedirect(r('company_home'))
