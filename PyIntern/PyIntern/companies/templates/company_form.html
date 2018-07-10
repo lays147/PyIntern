@@ -3,105 +3,128 @@
 {% block content %}
 <section class="section">
   <h1 class="title">Cadastrar Novo Coordenador</h1>
-  <form action="." method="POST">
-    {% csrf_token %}
-    <h3 class="title"> Informações da Empresa</h3>
-    <div class="field">
-      <label class="label">{{ form.company_name.label }}</label>
-      <div class="control">
-        {{ form.company_name|addclass:'input' }}
-      </div>
-      {% if form.company_name.errors %}
-        <p class="help is-danger">{{ form.company_name.errors }}</p>
-      {% endif %}
+  <div class="container">
+    <div class="notification">
+      <form action="." method="POST">
+        {% csrf_token %}
+        <h3 class="title"> Informações da Empresa</h3>
+        {#  Nome da Empresa #}
+        <div class="field">
+          <label class="label">{{ form.company_name.label }}</label>
+          <div class="control">
+            {{ form.company_name|addclass:'input' }}
+          </div>
+          {% if form.company_name.errors %}
+            <p class="help is-danger">{{ form.company_name.errors }}</p>
+          {% endif %}
+        </div>
+        {# CNPJ #}
+        <div class="field">
+          <label class="label">{{ form.cnpj.label }}</label>
+          <div class="control">
+            {{ form.cnpj|addclass:'input' }}
+          </div>
+          {% if form.cnpj.errors %}
+            <p class="help is-danger">{{ form.cnpj.errors }}</p>
+          {% endif %}
+        </div>
+        {# Descrição #}
+        <div class="field">
+          <label class="label">{{ form.description.label }}</label>
+          <div class="control">
+            {{ form.description|addtype:'textarea' }}
+          </div>
+          {% if form.description.errors %}
+            <p class="help is-danger">{{ form.description.errors }}</p>
+          {% endif %}
+        </div>
+        <h3 class="title"> Informações do Funcionário</h3>
+        {# Matrícula #}
+        <div class="field">
+          <label class="label">{{ form.registration.label }}</label>
+          <div class="control">
+            {{ form.registration|addclass:'input' }}
+          </div>
+          {% if form.registration.errors %}
+            <p class="help is-danger">{{ form.registration.errors }}</p>
+          {% endif %}
+        </div>
+        {# Nome #}
+        <div class="field">
+          <label class="label">{{ form.name.label }}</label>
+          <div class="control">
+            {{ form.name|addclass:'input' }}
+          </div>
+          {% if form.name.errors %}
+            <p class="help is-danger">{{ form.name.errors }}</p>
+          {% endif %}
+        </div>
+        {# E-Mail #}
+        <div class="field">
+          <label class="label">{{ form.email.label }}</label>
+          <div class="control">
+            {# <input class="input" type="email" placeholder="E-Mail"> #}
+            {{ form.email|addtype:'email' }}
+            {% if form.email.errors %}
+              <p class="help is-danger">O e-mail digitado é inválido.</p>
+            {% endif %}
+          </div>
+        </div>
+        {# Nome de Usuário #}
+        <div class="field">
+          <label class="label">{{ form.username.label }}</label>
+            {{ form.username|addclass:'input' }}
+          {% if form.username.errors %}
+            <p class="help is-danger">{{ form.username.errors }}</p>
+          {% endif %}
+        </div>
+        {# Senha 1 #}
+        <div class="field">
+          <label class="label">{{ form.password1.label }}</label>
+            {{ form.password1|addclass:'input' }}
+          {% if form.password1.errors %}
+            <p class="help is-danger">{{ form.password1.errors }}</p>
+          {% endif %}
+        </div>
+        {# Senha 2 #}
+        <div class="field">
+          <label class="label">{{ form.password2.label }}</label>
+            {{ form.password2|addclass:'input' }}
+          {% if form.password2.errors %}
+            <p class="help is-danger">{{ form.password2.errors }}</p>
+          {% endif %}
+        </div>
+        {# Telefone #}
+        <div class="field">
+          <label class="label">{{ form.phone.label }}</label>
+          <div class="control">
+            {{ form.phone|addclass:'input' }}
+          </div>
+          {% if form.phone.errors %}
+            <p class="help is-danger">{{ form.phone.errors }}</p>
+          {% endif %}
+        </div>
+        {# Endereço #}
+        <div class="field">
+          <label class="label">{{ form.address.label }} </label>
+          <div class="control">
+            {{ form.address|addclass:'input' }}
+          </div>
+          {% if form.address.errors %}
+            <p class="help is-danger">{{ form.address.errors }}</p>
+          {% endif %}
+        </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link" type="submit">Cadastrar</button>
+          </div>
+          <div class="control">
+            <button class="button is-text">Cancelar</button>
+          </div>
+        </div>
+      </form>
     </div>
-    <div class="field">
-      <label class="label">{{ form.cnpj.label }}</label>
-      <div class="control">
-        {{ form.cnpj|addclass:'input' }}
-      </div>
-      {% if form.cnpj.errors %}
-        <p class="help is-danger">{{ form.cnpj.errors }}</p>
-      {% endif %}
-    </div>
-    <div class="field">
-      <label class="label">{{ form.description.label }}</label>
-      <div class="control">
-        {{ form.description|addclass:'input' }}
-      </div>
-      {% if form.description.errors %}
-        <p class="help is-danger">{{ form.description.errors }}</p>
-      {% endif %}
-    </div>
-    <h3 class="title"> Informações do Funcionário</h3>
-    {# Matrícula #}
-    <div class="field">
-      <label class="label">{{ form.registration.label }}</label>
-      <div class="control">
-        {{ form.registration|addclass:'input' }}
-      </div>
-      {% if form.registration.errors %}
-        <p class="help is-danger">{{ form.registration.errors }}</p>
-      {% endif %}
-    </div>
-    {# Nome #}
-    <div class="field">
-      <label class="label">{{ form.name.label }}</label>
-      <div class="control">
-        {{ form.name|addclass:'input' }}
-      </div>
-      {% if form.name.errors %}
-        <p class="help is-danger">{{ form.name.errors }}</p>
-      {% endif %}
-    </div>
-    {# E-Mail #}
-    <div class="field">
-      <label class="label">{{ form.email.label }}</label>
-      <div class="control">
-        {# <input class="input" type="email" placeholder="E-Mail"> #}
-        {{ form.email|addtype:'email' }}
-        {% if form.email.errors %}
-          <p class="help is-danger">O e-mail digitado é inválido.</p>
-        {% endif %}
-      </div>
-    </div>
-    {# Nome de Usuário #}
-    <div class="field">
-      <label class="label">{{ form.username.label }}</label>
-        {{ form.username|addclass:'input' }}
-      {% if form.username.errors %}
-        <p class="help is-danger">{{ form.username.errors }}</p>
-      {% endif %}
-    </div>
-    {# Telefone #}
-    <div class="field">
-      <label class="label">{{ form.phone.label }}</label>
-      <div class="control">
-        {{ form.phone|addclass:'input' }}
-      </div>
-      {% if form.phone.errors %}
-        <p class="help is-danger">{{ form.phone.errors }}</p>
-      {% endif %}
-    </div>
-    {# Endereço #}
-    <div class="field">
-      <label class="label">{{ form.address.label }} </label>
-      <div class="control">
-        {{ form.address|addclass:'input' }}
-      </div>
-      {% if form.address.errors %}
-        <p class="help is-danger">{{ form.address.errors }}</p>
-      {% endif %}
-    </div>
-    </div>
-    <div class="field is-grouped">
-      <div class="control">
-        <button class="button is-link" type="submit">Cadastrar</button>
-      </div>
-      <div class="control">
-        <button class="button is-text">Cancelar</button>
-      </div>
   </div>
-  </form>
 </section>
 {% endblock content %}
