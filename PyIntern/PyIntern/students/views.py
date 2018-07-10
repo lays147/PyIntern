@@ -1,5 +1,6 @@
 """views for students."""
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User, Group
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, resolve_url as r
 from PyIntern.users.models import Student
@@ -52,5 +53,21 @@ def create(request):
             'student_form.html',
             {'form': form},
         )
-    Student.objects.create(**form.cleaned_data)
+    c_form = form.cleaned_data
+    user = User.objects.create_user(
+        username=c_form.get('username'),
+        password=c_form.get('password1'),
+        email=c_form.get('email'),
+        first_name=c_form.get('name').split()[0],
+    )
+    group = Group.objects.get(name='Students')
+    user.groups.add(group)
+    c_form.pop('password1')
+    c_form.pop('password2')
+
+    Student.objects.create(**c_form)
     return HttpResponseRedirect(r('students_list'))
+
+
+def invalid(request, form):
+    """Form not valid."""
