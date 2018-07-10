@@ -1,20 +1,22 @@
-"""views for companies"""
-from django.shortcuts import render, resolve_url as r
+"""views for companies."""
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
+from django.shortcuts import render, resolve_url as r
 from PyIntern.users.models import Company
 from .forms import CompanyForm
 
 
-# Create your views here.
+@login_required
 def home(request):
     """Return home page."""
     return render(
         request,
         'companies_home.html',
-        {'user': 'Lays'},
+        {'user': request.user.first_name},
     )
 
 
+@login_required
 def list_companies(request):
     """Return list of companies on the system."""
     companies = Company.objects.all()
