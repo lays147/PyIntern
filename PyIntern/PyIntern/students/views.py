@@ -1,19 +1,22 @@
-from django.shortcuts import render, resolve_url as r
+"""views for students."""
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
+from django.shortcuts import render, resolve_url as r
 from PyIntern.users.models import Student
 from .forms import StudentsForm
 
 
-# Create your views here.
+@login_required
 def home(request):
     """Return home page."""
     return render(
         request,
         'students_home.html',
-        {'user': 'Lays'},
+        {'user': request.user.first_name},
     )
 
 
+@login_required
 def list_students(request):
     """Return list of students on the system."""
     students = Student.objects.all()
