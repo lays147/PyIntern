@@ -16,6 +16,7 @@
   <div class="column">
     <div class="container">
       <div class="notification">
+        <h3 class="title has-text-centered">Faça seu Login</h3>
         {% if error %}
           <div class="notification is-danger">
             Usuário ou Senha estão incorretos.
@@ -23,24 +24,30 @@
         {% endif %}
         <form action="." method="POST">
           {% csrf_token %}
-            <div class="field">
+            <div class="field has-text-centered">
               <label class="label">Nome de Usuário</label>
-              <div class="control">
-                <input name='user'class="input is-info" type="text" placeholder="Nome de Usuário">
+              <div class="control has-text-centered">
+                <input style="width:20%" name='user'class="input is-info" type="text" placeholder="Nome de Usuário">
               </div>
             </div>
-            <div class="field">
+            <div class="field has-text-centered">
               <label class="label">Senha</label>
-              <div class="control">
-                <input name='pwd' class="input is-info" type="password" placeholder="Senha">
+              <div class="control has-text-centered">
+                <input style="width:20%" name='pwd' class="input is-info" type="password" placeholder="Senha">
               </div>
             </div>
-            <div class="field is-grouped">
-              <div class="control">
-                <button class="button is-link">Entrar</button>
+            <div class="field has-text-centered">
+              <div class="control has-text-centered">
+                <button class="button is-medium is-info">Entrar</button>
               </div>
             </div>
         </form>
+        <br />
+        <h3 class="title has-text-centered">Ou Registre-se</h3>
+        <div class="field has-text-centered">
+            <a href={% url 'new_student' %} class="button is-medium is-info"> Aluno </a>
+            <a href={% url 'new_company' %} class="button is-medium is-info"> Empresa </a>
+        </div>
       </div>
     </div>
 </div>
