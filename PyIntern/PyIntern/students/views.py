@@ -1,8 +1,9 @@
 """views for students."""
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group
+from django.forms.models import model_to_dict
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, resolve_url as r
+from django.shortcuts import render, resolve_url as r, get_object_or_404
 from PyIntern.users.models import Student
 from .forms import StudentsForm
 
@@ -69,5 +70,15 @@ def create(request):
     return HttpResponseRedirect(r('students_list'))
 
 
-def invalid(request, form):
-    """Form not valid."""
+@login_required
+def get_student(request, register):
+    """Student file."""
+    student = get_object_or_404(Student, registration=register)
+    data = model_to_dict(student)
+    return render(
+        request,
+        'students_record.html',
+        {
+            'student': data,
+        },
+    )

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load templatefilters %}
+{% block content %}
+<section class="section">
+  <h3 class="title">Aluno(a): {{ student.name }}</h3>
+  <div class="container">
+    <div class="notification">
+        {% for key,value in student.items %}
+          <div class="control">
+            <strong>{{ key|capfirst }}</strong> : {{ value }}
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock content %}
