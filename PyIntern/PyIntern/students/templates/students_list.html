@@ -13,7 +13,7 @@
     <tbody>
       {% for s in students %}
         <tr>
-          <td>{{ s.name }}</td>
+          <td><a href="{% url 'get_student' s.registration %}">{{ s.name }}</a></td>
           <td>{{ s.registration }}</td>
           <td>{{ s.email }}</td>
           <td>{{ s.course }}</td>
