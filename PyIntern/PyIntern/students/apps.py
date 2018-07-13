@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class StudentsConfig(AppConfig):
-    name = 'students'
+    name = 'PyIntern.students'
+    verbose_name = 'Controle de Estudantes'
