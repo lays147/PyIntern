@@ -19,6 +19,6 @@ class Candidatures(models.Model):
     """Candidatures Model."""
 
     company = models.ForeignKey('users.Company', on_delete=models.CASCADE)
-    student = models.ForeignKey('users.Student', on_delete=models.CASCADE)
+    student = models.ForeignKey('students.Student', on_delete=models.CASCADE)
     job = models.ForeignKey('Jobs', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)

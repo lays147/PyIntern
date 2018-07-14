@@ -4,7 +4,7 @@ from django.contrib.auth.models import User, Group
 from django.forms.models import model_to_dict
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, resolve_url as r, get_object_or_404
-from PyIntern.users.models import Student
+from .models import Student
 from .forms import StudentsForm
 
 

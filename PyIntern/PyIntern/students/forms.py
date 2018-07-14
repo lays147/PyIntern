@@ -1,6 +1,6 @@
 """Form for coordinators."""
 from django import forms
-from PyIntern.users.models import Student
+from .models import Student
 
 
 class StudentsForm(forms.Form):
