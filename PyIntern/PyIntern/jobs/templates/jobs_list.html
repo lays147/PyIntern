@@ -12,7 +12,7 @@
     <tbody>
       {% for j in jobs %}
         <tr>
-          <td><a href="{% url 'get_job' j.id %}">{{ j.name }}</a></td>
+          <td><a href="{% url 'jobs_get' j.id %}">{{ j.name }}</a></td>
           <td>{{ j.company.name }}</td>
           <td>{{ j.created_at }}</td>
           <td>{{ j.end_at }}</td>

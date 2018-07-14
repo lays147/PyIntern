@@ -41,7 +41,7 @@ def register_into_job(request, pk_job):
     """Register into job."""
     student = get_object_or_404(Student, username=request.user.username)
     job = get_object_or_404(Jobs, id=pk_job)
-    company = get_object_or_404(Company, registration=job.company.registration)
+    company = get_object_or_404(Companies, id=job.company.id)
     Candidatures.objects.create(
         student=student,
         company=company,
