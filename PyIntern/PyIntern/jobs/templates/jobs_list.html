@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section">
+  <h1 class="title"> Vagas Cadastradas </h1>
+  <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <thead>
+      <th> Vaga </th>
+      <th> Empresa </th>
+      <th> Cadastrada em </th>
+      <th> Encerra em</th>
+    </thead>
+    <tbody>
+      {% for j in jobs %}
+        <tr>
+          <td><a href="{% url 'get_job' j.id %}">{{ j.name }}</a></td>
+          <td>{{ j.company.name }}</td>
+          <td>{{ j.created_at }}</td>
+          <td>{{ j.end_at }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock content %}

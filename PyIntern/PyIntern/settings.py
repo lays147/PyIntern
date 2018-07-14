@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'PyIntern.coordinators',
     'PyIntern.companies',
     'PyIntern.students.apps.StudentsConfig',
+    'PyIntern.jobs',
 ]
 
 MIDDLEWARE = [
