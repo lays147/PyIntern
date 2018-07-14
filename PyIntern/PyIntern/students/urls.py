@@ -4,7 +4,7 @@ from .views import home, list_students, new_register, get_student
 
 urlpatterns = [
     path('', home, name='students_home'),
-    path('list/', list_students, name='list_students'),
-    path('register/', new_register, name='new_student'),
-    re_path(r'^(\d+)/$', get_student, name='get_student'),
+    path('list/', list_students, name='students_list'),
+    path('register/', new_register, name='students_new'),
+    re_path(r'^(\d+)/$', get_student, name='students_get'),
 ]
