@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'PyIntern.core',
     'PyIntern.users',
     'PyIntern.coordinators.apps.CoordinatorsConfig',
-    'PyIntern.companies',
+    'PyIntern.companies.apps.CompaniesConfig',
     'PyIntern.students.apps.StudentsConfig',
     'PyIntern.jobs',
 ]

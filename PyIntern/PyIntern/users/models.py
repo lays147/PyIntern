@@ -1,4 +1,3 @@
-from django.core.validators import RegexValidator
 from django.db import models
 
 
@@ -19,12 +18,3 @@ class User(models.Model):
     def __str__(self):
         """Return user name."""
         return self.name
-
-
-class Company(User):
-    """Company."""
-
-    company_name = models.CharField(max_length=200)
-    cnpj = models.CharField(
-        max_length=14, validators=[RegexValidator(r'^\d{14}$')])
-    description = models.CharField(max_length=500)

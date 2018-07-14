@@ -3,7 +3,7 @@ from django.forms.models import model_to_dict
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, resolve_url as r, get_object_or_404
 from .models import Jobs, Candidatures
-from PyIntern.users.models import Company
+from PyIntern.companies.models import Companies
 from PyIntern.students.models import Student
 
 

@@ -4,7 +4,7 @@ from django.contrib.auth.models import User, Group
 from django.forms.models import model_to_dict
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, resolve_url as r, get_object_or_404
-from PyIntern.users.models import Company
+from .models import Companies
 from .forms import CompanyForm
 
 
@@ -21,7 +21,7 @@ def home(request):
 @login_required
 def list_companies(request):
     """Return list of companies on the system."""
-    companies = Company.objects.all()
+    companies = Companies.objects.all()
     return render(
         request,
         'companies_list.html',
@@ -66,14 +66,14 @@ def create(request):
     c_form.pop('password1')
     c_form.pop('password2')
 
-    Company.objects.create(**c_form)
+    Companies.objects.create(**c_form)
     return HttpResponseRedirect(r('company_home'))
 
 
 @login_required
 def get_company(request, register):
     """company file."""
-    company = get_object_or_404(Company, registration=register)
+    company = get_object_or_404(Companies, registration=register)
     data = model_to_dict(company)
     return render(
         request,
