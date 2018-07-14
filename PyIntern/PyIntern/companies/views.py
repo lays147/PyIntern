@@ -67,7 +67,7 @@ def create(request):
     c_form.pop('password2')
 
     Companies.objects.create(**c_form)
-    return HttpResponseRedirect(r('company_home'))
+    return HttpResponseRedirect(r('companies_home'))
 
 
 @login_required
