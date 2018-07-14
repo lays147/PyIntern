@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class Jobs(models.Model):
     """Jobs Model."""
-
+    company = models.ForeignKey('users.Company', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
     requirements = models.CharField(max_length=500)
