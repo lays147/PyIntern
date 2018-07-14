@@ -1,9 +1,9 @@
 from django.db import models
 
 
-# Create your models here.
 class Jobs(models.Model):
     """Jobs Model."""
+
     company = models.ForeignKey(
         'companies.Companies',
         verbose_name='Empresa',
@@ -16,6 +16,13 @@ class Jobs(models.Model):
     end_at = models.DateField('Data de Encerramento')
     answer_date = models.DateField('Data de Retorno')
     available = models.BooleanField('Inscrições Disponíveis')
+
+    class Meta:
+        """Meta class for Jobs."""
+
+        verbose_name = 'Vaga'
+        verbose_name_plural = 'Vagas'
+        ordering = ('name', )
 
 
 class Candidatures(models.Model):
@@ -30,3 +37,10 @@ class Candidatures(models.Model):
     job = models.ForeignKey(
         'Jobs', verbose_name='Vaga', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        """Meta class for Candidatures."""
+
+        verbose_name = 'Candidatura'
+        verbose_name_plural = 'Candidaturas'
+        ordering = ('created_at', )
