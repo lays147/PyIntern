@@ -24,6 +24,9 @@ class Jobs(models.Model):
         verbose_name_plural = 'Vagas'
         ordering = ('name', )
 
+    def __str__(self):
+        return self.name
+
 
 class Candidatures(models.Model):
     """Candidatures Model."""

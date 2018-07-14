@@ -29,3 +29,6 @@ class Student(User):
         verbose_name = 'Estudante'
         verbose_name_plural = 'Estudantes'
         ordering = ('name', )
+
+    def __str__(self):
+        return self.name

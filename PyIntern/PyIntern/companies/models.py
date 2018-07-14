@@ -19,3 +19,6 @@ class Companies(User):
         verbose_name = 'Empresa'
         verbose_name_plural = 'Empresas'
         ordering = ('name', )
+
+    def __str__(self):
+        return self.company_name
