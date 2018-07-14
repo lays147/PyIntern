@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, resolve_url as r
-from PyIntern.users.models import Coordinator
+from .models import Coordinator
 from .forms import CoordinatorsForm
 
 

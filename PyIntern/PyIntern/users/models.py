@@ -21,12 +21,6 @@ class User(models.Model):
         return self.name
 
 
-class Coordinator(User):
-    """Coordinator."""
-
-    cpf = models.CharField(max_length=11)
-
-
 class Company(User):
     """Company."""
 

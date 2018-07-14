@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'taggit',
     'PyIntern.core',
     'PyIntern.users',
-    'PyIntern.coordinators',
+    'PyIntern.coordinators.apps.CoordinatorsConfig',
     'PyIntern.companies',
     'PyIntern.students.apps.StudentsConfig',
     'PyIntern.jobs',
