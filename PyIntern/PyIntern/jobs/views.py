@@ -21,10 +21,12 @@ def get_job(request, id):
     """Jobs file."""
     job = get_object_or_404(Jobs, id=id)
     data = model_to_dict(job)
+    is_student = request.user.groups.filter(name='Students').exists()
     return render(
         request,
         'view_job.html',
         {
             'job': data,
+            'student': is_student
         },
     )
