@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section">
+  <h3 class="title">Vaga(a): {{ job.name }}</h3>
+  <div class="container">
+    <div class="notification">
+        {% for key,value in job.items %}
+          <div class="control">
+            <strong>{{ key|capfirst }}</strong> : {{ value }}
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock content %}
