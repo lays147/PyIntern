@@ -6,9 +6,9 @@ from .models import Student
 class StudentModelAdmin(admin.ModelAdmin):
     """Student model admin."""
 
-    list_display = ('name', 'registration', 'allowed')
+    list_display = ('name', 'register', 'allowed')
     date_hierarchy = 'created_at'
-    search_fields = ('name', 'registration', 'cpf')
+    search_fields = ('name', 'register')
 
 
 admin.site.register(Student, StudentModelAdmin)

@@ -70,9 +70,9 @@ def create(request):
 
 
 @login_required
-def get_student(request, register):
+def get_student(request, id):
     """Student file."""
-    student = get_object_or_404(Student, registration=register)
+    student = get_object_or_404(Student, id=id)
     data = model_to_dict(student)
     return render(
         request,

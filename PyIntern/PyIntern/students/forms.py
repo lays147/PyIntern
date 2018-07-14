@@ -11,11 +11,17 @@ class StudentsForm(forms.Form):
         cleaned_data = super().clean()
         pw1 = cleaned_data.get('password1')
         pw2 = cleaned_data.get('password2')
+
         if pw1 != pw2:
             self.add_error('password2', 'Senhas não conferem.')
+
+        cleaned_data.pop('password1')
+        cleaned_data.pop('password2')
+
+        cleaned_data['password'] = pw1
         return cleaned_data
 
-    registration = forms.CharField(
+    register = forms.CharField(
         label='Matrícula',
         required=True,
     )
@@ -47,25 +53,11 @@ class StudentsForm(forms.Form):
         min_length=11,
         max_length=11,
     )
-    address = forms.CharField(
-        label='Endereço',
-        required=True,
-    )
-    cpf = forms.CharField(
-        label='CPF',
-        min_length=11,
-        max_length=11,
-        required=True,
-    )
     course = forms.ChoiceField(choices=Student.COURSE, )
     mini_bio = forms.CharField(
         label='Mini Bio',
         widget=forms.Textarea,
         max_length=600,
-    )
-    birth_date = forms.DateField(
-        label='Data de Nascimento',
-        input_formats=['%Y-%m-%d'],
     )
     resume = forms.FileField(label='Currículo', required=False)
     competences = forms.CharField(label='Competências')
