@@ -13,7 +13,7 @@
   </div>
   {% if student %}
     <div class="control">
-      <a class="button is-info" href="">Candidatar</a>
+      <a class="button is-info" href="{% url 'register_into_job' pk_job=job.id %}">Candidatar</a>
     </div>
   {% endif %}
 </section>
