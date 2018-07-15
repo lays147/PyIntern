@@ -13,7 +13,7 @@
     <tbody>
       {% for c in companies %}
         <tr>
-          <td><a href="{% url 'companies_get' c.registration %}">{{ c.company_name }}</a></td>
+          <td><a href="{% url 'companies_get' c.id %}">{{ c.company_name }}</a></td>
           <td>{{ c.cnpj }}</td>
           <td>{{ c.name }}</td>
           <td>{{ c.email }}</td>
