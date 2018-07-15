@@ -3,8 +3,12 @@ from django import forms
 from .models import Student
 
 
-class StudentsForm(forms.Form):
+class StudentsForm(forms.ModelForm):
     """Students Form."""
+
+    class Meta:
+        model = Student
+        exclude = ['created_at']
 
     def clean(self):
         """Clean form."""
@@ -21,22 +25,6 @@ class StudentsForm(forms.Form):
         cleaned_data['password'] = pw1
         return cleaned_data
 
-    register = forms.CharField(
-        label='Matrícula',
-        required=True,
-    )
-    name = forms.CharField(
-        label='Nome',
-        required=True,
-    )
-    email = forms.EmailField(
-        label='E-Mail',
-        required=True,
-    )
-    username = forms.CharField(
-        label='Nome de Usuário',
-        required=True,
-    )
     password1 = forms.CharField(
         label='Senha',
         required=True,
@@ -47,17 +35,3 @@ class StudentsForm(forms.Form):
         required=True,
         widget=forms.PasswordInput,
     )
-    phone = forms.CharField(
-        label='Telefone',
-        required=True,
-        min_length=11,
-        max_length=11,
-    )
-    course = forms.ChoiceField(choices=Student.COURSE, )
-    mini_bio = forms.CharField(
-        label='Mini Bio',
-        widget=forms.Textarea,
-        max_length=600,
-    )
-    resume = forms.FileField(label='Currículo', required=False)
-    competences = forms.CharField(label='Competências')

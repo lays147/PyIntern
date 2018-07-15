@@ -67,7 +67,7 @@ def create(request):
     c_form.pop('password')
 
     Student.objects.create(**c_form)
-    return HttpResponseRedirect(r('students_list'))
+    return HttpResponseRedirect(r('home'))
 
 
 @login_required
