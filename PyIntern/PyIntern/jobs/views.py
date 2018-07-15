@@ -21,6 +21,18 @@ def list_jobs(request):
 
 
 @login_required
+def list_company_jobs(request):
+    """Return list of jobs on the system."""
+    company = get_object_or_404(Companies, username=request.user.username)
+    jobs = Jobs.objects.all().filter(company=company).filter(available=True)
+    return render(
+        request,
+        'jobs_list.html',
+        {'jobs': jobs},
+    )
+
+
+@login_required
 def get_job(request, id):
     """Jobs file."""
     job = get_object_or_404(Jobs, id=id)
@@ -74,5 +86,5 @@ def create(request):
     form = JobsForm(request.POST, initial={'company': company})
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect(r('jobs_list'))
+        return HttpResponseRedirect(r('jobs_list_only_company'))
     return render(request, 'jobs_form.html', {'form': form})
