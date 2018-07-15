@@ -57,17 +57,15 @@ def create(request):
     c_form = form.cleaned_data
     user = User.objects.create_user(
         username=c_form.get('username'),
-        password=c_form.get('password1'),
+        password=c_form.pop('password'),
         email=c_form.get('email'),
         first_name=c_form.get('name').split()[0],
     )
     group = Group.objects.get(name='Companies')
     user.groups.add(group)
-    c_form.pop('password1')
-    c_form.pop('password2')
-
     Companies.objects.create(**c_form)
-    return HttpResponseRedirect(r('companies_home'))
+
+    return HttpResponseRedirect(r('home'))
 
 
 @login_required
