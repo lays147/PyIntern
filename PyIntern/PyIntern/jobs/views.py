@@ -2,9 +2,10 @@ from django.contrib.auth.decorators import login_required
 from django.forms.models import model_to_dict
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, resolve_url as r, get_object_or_404
-from .models import Jobs, Candidatures
 from PyIntern.companies.models import Companies
 from PyIntern.students.models import Student
+from .models import Jobs, Candidatures
+from .forms import JobsForm
 
 
 # Create your views here.
@@ -48,3 +49,30 @@ def register_into_job(request, pk_job):
         job=job,
     )
     return HttpResponseRedirect(r('students_home'))
+
+
+def new_register(request):
+    """Handle request to the form."""
+    if request.method == 'POST':
+        return create(request)
+    return empty_form(request)
+
+
+def empty_form(request):
+    """Crete empty form."""
+    company = get_object_or_404(Companies, username=request.user.username)
+    return render(
+        request,
+        'jobs_form.html',
+        {'form': JobsForm(initial={'company': company})},
+    )
+
+
+@login_required
+def create(request):
+    company = get_object_or_404(Companies, username=request.user.username)
+    form = JobsForm(request.POST, initial={'company': company})
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(r('jobs_list'))
+    return render(request, 'jobs_form.html', {'form': form})

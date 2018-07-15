@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load templatefilters %}
+{% block content %}
+<section class="section">
+  <h1 class="title">Cadastrar Nova Vaga</h1>
+  <div class="container">
+    <div class="notification">
+      <form action="." method="POST">
+        {% csrf_token %}
+        {{ form.company.as_hidden }}
+        {# Nome da Vaga #}
+        <div class="field">
+          <label class="label">{{ form.name.label }}</label>
+          <div class="control">
+            {{ form.name|addclass:'input' }}
+          </div>
+          {% if form.name.errors %}
+            <p class="help is-danger">{{ form.name.errors }}</p>
+          {% endif %}
+        </div>
+        {# Descrição da Vaga #}
+        <div class="field">
+          <label class="label">{{ form.description.label }}</label>
+          <div class="control">
+            {{ form.description|addclass:'input' }}
+          </div>
+          {% if form.description.errors %}
+            <p class="help is-danger">{{ form.description.errors }}</p>
+          {% endif %}
+        </div>
+        {# Requisitos da Vaga #}
+        <div class="field">
+          <label class="label">{{ form.requirements.label }}</label>
+          <div class="control">
+            {{ form.requirements|addclass:'input' }}
+          </div>
+          {% if form.requirements.errors %}
+            <p class="help is-danger">{{ form.requirements.errors }}</p>
+          {% endif %}
+        </div>
+        {# Benefícios da Vaga #}
+        <div class="field">
+          <label class="label">{{ form.benefits.label }}</label>
+          <div class="control">
+            {{ form.benefits|addclass:'input' }}
+          </div>
+          {% if form.benefits.errors %}
+            <p class="help is-danger">{{ form.benefits.errors }}</p>
+          {% endif %}
+        </div>
+        {# Encerramento da Vaga #}
+        <div class="field">
+          <label class="label">{{ form.end_at.label }}</label>
+          <div class="control">
+            {{ form.end_at }}
+          </div>
+          {% if form.end_at.errors %}
+            <p class="help is-danger">{{ form.end_at.errors }}</p>
+          {% endif %}
+        </div>
+        {# Data de retorno da Vaga #}
+        <div class="field">
+          <label class="label">{{ form.answer_date.label }}</label>
+          <div class="control">
+            {{ form.answer_date }}
+          </div>
+          {% if form.answer_date.errors %}
+            <p class="help is-danger">{{ form.answer_date.errors }}</p>
+          {% endif %}
+        </div>
+        {# Inscrições abertas? #}
+        <div class="field">
+          <label class="label">{{ form.available.label }}</label>
+          <div class="control">
+            {{ form.available|addclass:'checkbox' }}
+          </div>
+          {% if form.available.errors %}
+            <p class="help is-danger">{{ form.available.errors }}</p>
+          {% endif %}
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link" type="submit">Cadastrar</button>
+          </div>
+          <div class="control">
+            <a href="{% url 'companies_home' %}" class="button is-text">Cancelar</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock content%}
