@@ -1,6 +1,6 @@
 {% extends 'coordinators_home.html' %}
 {% load templatefilters %}
-{% block extra_content %}
+{% block content %}
 <h1 class="title">Cadastrar Novo Coordenador</h1>
 <div class="container">
   <div class="notification">
@@ -8,12 +8,12 @@
       {% csrf_token %}
       {# Matrícula #}
       <div class="field">
-        <label class="label">{{ form.registration.label }}</label>
+        <label class="label">{{ form.register.label }}</label>
         <div class="control">
-          {{ form.registration|addclass:'input' }}
+          {{ form.register|addclass:'input' }}
         </div>
-        {% if form.registration.errors %}
-          <p class="help is-danger">{{ form.registration.errors }}</p>
+        {% if form.register.errors %}
+          <p class="help is-danger">{{ form.register.errors }}</p>
         {% endif %}
       </div>
       {# Nome #}
@@ -71,25 +71,6 @@
           <p class="help is-danger">{{ form.phone.errors }}</p>
         {% endif %}
       </div>
-      {# Endereço #}
-      <div class="field">
-        <label class="label">{{ form.address.label }} </label>
-        <div class="control">
-          {{ form.address|addclass:'input' }}
-        </div>
-        {% if form.address.errors %}
-          <p class="help is-danger">{{ form.address.errors }}</p>
-        {% endif %}
-      </div>
-      {# CPF #}
-      <div class="field">
-        <label class="label">{{ form.cpf.label }}</label>
-        <div class="control">
-          {{ form.cpf|addclass:'input' }}
-        </div>
-        {% if form.cpf.errors %}
-          <p class="help is-danger">O CPF digitado é inválido.</p>
-        {% endif %}
       </div>
       <div class="field is-grouped">
         <div class="control">
@@ -102,4 +83,4 @@
     </form>
   </div>
 </div>
-{% endblock extra_content %}
+{% endblock content %}

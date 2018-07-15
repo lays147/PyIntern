@@ -1,5 +1,5 @@
 {% extends 'coordinators_home.html' %}
-{% block extra_content %}
+{% block content %}
 <h1 class="title"> Coordenadores Cadastrados </h1>
 <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
   <thead>
@@ -12,11 +12,11 @@
     {% for c in coordinators %}
       <tr>
         <td>{{ c.name }}</td>
-        <td>{{ c.registration }}</td>
+        <td>{{ c.register }}</td>
         <td>{{ c.email }}</td>
         <td>{{ c.created_at }}</td>
       </tr>
     {% endfor %}
   </tbody>
 </table>
-{% endblock extra_content %}
+{% endblock content %}

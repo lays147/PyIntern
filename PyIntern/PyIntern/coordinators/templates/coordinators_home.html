@@ -5,30 +5,22 @@
     <h1 class="title"> Bem-Vindo, {{ user }}</h1>
   </div>
   <br/>
-  <div class="columns">
-    <div class="column is-one-quarter">
-      <aside class="menu">
-        <p class="menu-label"> Alunos </p>
-        <ul class="menu-list">
-          <li><a>Aprovar Cadastro</a></li>
-          <li><a href="{% url 'students_list' %}">Consultar</a></li>
-        </ul>
-        <p class="menu-label">Empresas</p>
-        <ul class="menu-list">
-          {# <li><a>Aprovar Cadastro</a></li> #}
-          <li><a href="{% url 'companies_list' %}">Consultar</a></li>
-        </ul>
-        <p class="menu-label">Coordenadores</p>
-        <ul class="menu-list">
-          <li><a href="{% url 'coordinators_list' %}">Consultar</a></li>
-          <li><a href="{% url 'coordinators_new' %}">Cadastrar</a></li>
-        </ul>
-      </aside>
-    </div>
-    <div class="column">
-      {% block extra_content %}
-      {% endblock extra_content %}
-    </div>
-  </div>
+    <aside class="menu">
+      <p class="menu-label"> Alunos </p>
+      <ul class="menu-list">
+        {# <li><a>Aprovar Cadastro</a></li> #}
+        <li><a href="{% url 'students_list' %}">Consultar</a></li>
+      </ul>
+      <p class="menu-label">Empresas</p>
+      <ul class="menu-list">
+        {# <li><a>Aprovar Cadastro</a></li> #}
+        <li><a href="{% url 'companies_list' %}">Consultar</a></li>
+      </ul>
+      <p class="menu-label">Coordenadores</p>
+      <ul class="menu-list">
+        <li><a href="{% url 'coordinators_list' %}">Consultar</a></li>
+        <li><a href="{% url 'coordinators_new' %}">Cadastrar</a></li>
+      </ul>
+    </aside>
 </section>
 {% endblock content %}
