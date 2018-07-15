@@ -2,7 +2,7 @@
 {% block content %}
 <section class="section">
   <h1 class="title"> Alunos Cadastrados </h1>
-  <table class="table">
+  <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
     <thead>
       <th> Nome </th>
       <th> Matrícula </th>
@@ -13,7 +13,7 @@
     <tbody>
       {% for s in students %}
         <tr>
-          <td><a href="{% url 'get_student' s.id %}">{{ s.name }}</a></td>
+          <td><a href="{% url 'students_get' s.id %}">{{ s.name }}</a></td>
           <td>{{ s.register }}</td>
           <td>{{ s.email }}</td>
           <td>{{ s.course }}</td>
