@@ -4,6 +4,7 @@ from django.contrib.auth.models import User, Group
 from django.forms.models import model_to_dict
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, resolve_url as r, get_object_or_404
+from PyIntern.jobs.models import Candidatures
 from .models import Student
 from .forms import StudentsForm
 
@@ -81,3 +82,13 @@ def get_student(request, id):
             'student': data,
         },
     )
+
+
+@login_required
+def list_subscriptions(request, new=False):
+    student = get_object_or_404(Student, username=request.user.username)
+    subscriptions = Candidatures.objects.all().filter(student=student)
+    return render(request, 'students_subscriptions.html', {
+        'new': new,
+        'subscriptions': subscriptions
+    })

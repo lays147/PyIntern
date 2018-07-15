@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section">
+  {% if new %}
+  <div class="notification is-success">
+    Sua inscrição na vaga {{ position }} foi confirmada! Confira suas inscrições na lista abaixo!
+  </div>
+  {% endif %}
+  <h1 class="title"> Inscrições </h1>
+  <table class="table">
+    <thead>
+      <th> Vaga </th>
+      <th> Empresa </th>
+      <th> Data de Cadastro </th>
+    </thead>
+    <tbody>
+      {% for s in subscriptions %}
+        <tr>
+          <td>{{ s.job.name }}</td>
+          <td>{{ s.company.company_name }}</td>
+          <td>{{ s.created_at }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock content %}

@@ -60,7 +60,7 @@ def register_into_job(request, pk_job):
         company=company,
         job=job,
     )
-    return HttpResponseRedirect(r('students_home'))
+    return HttpResponseRedirect(r('students_subscriptions', new=True))
 
 
 def new_register(request):
