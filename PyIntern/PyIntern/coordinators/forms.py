@@ -1,9 +1,14 @@
 """Form for coordinators."""
 from django import forms
+from .models import Coordinator
 
 
-class CoordinatorsForm(forms.Form):
+class CoordinatorsForm(forms.ModelForm):
     """Coordinators Form."""
+
+    class Meta:
+        model = Coordinator
+        exclude = ['created_at']
 
     def clean(self):
         """Clean form."""
@@ -20,22 +25,6 @@ class CoordinatorsForm(forms.Form):
         cleaned_data['password'] = pw1
         return cleaned_data
 
-    register = forms.CharField(
-        label='Matrícula',
-        required=True,
-    )
-    name = forms.CharField(
-        label='Nome',
-        required=True,
-    )
-    email = forms.EmailField(
-        label='E-Mail',
-        required=True,
-    )
-    username = forms.CharField(
-        label='Nome de Usuário',
-        required=True,
-    )
     password1 = forms.CharField(
         label='Senha',
         required=True,
@@ -45,14 +34,4 @@ class CoordinatorsForm(forms.Form):
         label='Confirme sua senha',
         required=True,
         widget=forms.PasswordInput,
-    )
-    phone = forms.CharField(
-        label='Telefone',
-        required=True,
-        min_length=11,
-        max_length=11,
-    )
-    address = forms.CharField(
-        label='Endereço',
-        required=True,
     )
