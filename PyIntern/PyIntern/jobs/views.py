@@ -57,6 +57,8 @@ def register_into_job(request, pk_job):
     company = get_object_or_404(Companies, id=job.company.id)
     already_subscribed = Candidatures.objects.all().filter(
         student=student).filter(job=job)
+    if not student.allowed:
+        return HttpResponseRedirect(r('students_home', allowed=False))
     if already_subscribed:
         return HttpResponseRedirect(r('students_subscriptions'))
     Candidatures.objects.create(

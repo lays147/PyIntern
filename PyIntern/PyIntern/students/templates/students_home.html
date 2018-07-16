@@ -5,6 +5,12 @@
     <h1 class="title"> Bem-Vindo, {{ user }}</h1>
   </div>
   <br/>
+
+  {% if not allowed %}
+    <div class="notification is-danger">
+      Aluno não autorizado para candidaturas. Entre em contato com o coordenador do sistema.
+    </div>
+  {% endif %}
   <div class="columns">
     <div class="column is-one-quarter">
       <aside class="menu">

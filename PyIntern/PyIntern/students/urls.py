@@ -4,7 +4,8 @@ from .views import home, list_students, new_register, get_student
 from .views import list_subscriptions
 
 urlpatterns = [
-    path('', home, name='students_home'),
+    path('home/', home, name='students_home'),
+    re_path(r'^home/(?P<allowed>)', home, name='students_home'),
     path('list/', list_students, name='students_list'),
     path('register/', new_register, name='students_new'),
     re_path(r'^(\d+)/$', get_student, name='students_get'),

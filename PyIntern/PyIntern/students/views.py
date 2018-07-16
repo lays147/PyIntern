@@ -10,12 +10,15 @@ from .forms import StudentsForm
 
 
 @login_required
-def home(request):
+def home(request, allowed=True):
     """Return home page."""
     return render(
         request,
         'students_home.html',
-        {'user': request.user.first_name},
+        {
+            'user': request.user.first_name,
+            'allowed': allowed
+        },
     )
 
 
