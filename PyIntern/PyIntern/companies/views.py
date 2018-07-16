@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, resolve_url as r, get_object_or_404
 from .models import Companies
 from .forms import CompanyForm
+from PyIntern.jobs.models import Candidatures
 
 
 @login_required
@@ -79,4 +80,16 @@ def get_company(request, register):
         {
             'company': data,
         },
+    )
+
+
+@login_required
+def get_candidatures(request):
+    """return list of students candidatures."""
+    company = get_object_or_404(Companies, username=request.user.username)
+    candidatures = Candidatures.objects.all().filter(company=company)
+    return render(
+        request,
+        'companies_list_enroll.html',
+        {'candidatures': candidatures},
     )

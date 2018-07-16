@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section">
+  <h1 class="title"> Candidaturas </h1>
+  <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <thead>
+      <th> Nome do Aluno </th>
+      <th> Vaga </th>
+      <th> E-Mail</th>
+      <th> Data de Cadastro </th>
+    </thead>
+    <tbody>
+      {% for c in candidatures %}
+        <tr>
+          <td><a href="{% url 'students_get' c.student.id %}">{{ c.student.name }}</a></td>
+          <td>{{ c.job.name }}</td>
+          <td>{{ c.student.email }}</td>
+          <td>{{ c.created_at }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock content %}

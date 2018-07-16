@@ -4,9 +4,7 @@
   <div class="container">
     <div class="notification">
       <form action="." method="POST">
-        {% if form.errors %}
-        <p class="help is-danger">{{ form.errors }}</p>
-        {% endif %} {% csrf_token %}
+        {% csrf_token %}
         <h3 class="title"> Informações da Empresa</h3> {# Nome da Empresa #}
         <div class="field">
           <label class="label">{{ form.company_name.label }}</label>
