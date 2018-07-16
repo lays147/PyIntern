@@ -1,21 +1,20 @@
-{% extends 'base.html' %}
-{% load templatefilters %}
-{% block content %}
+{% extends 'base.html' %} {% load templatefilters %} {% block content %}
 <section class="section">
-  <h1 class="title">Cadastrar Novo Coordenador</h1>
+  <h1 class="title">Cadastrar Nova Empresa</h1>
   <div class="container">
     <div class="notification">
       <form action="." method="POST">
-        {% csrf_token %}
-        <h3 class="title"> Informações da Empresa</h3>
-        {#  Nome da Empresa #}
+        {% if form.errors %}
+        <p class="help is-danger">{{ form.errors }}</p>
+        {% endif %} {% csrf_token %}
+        <h3 class="title"> Informações da Empresa</h3> {# Nome da Empresa #}
         <div class="field">
           <label class="label">{{ form.company_name.label }}</label>
           <div class="control">
             {{ form.company_name|addclass:'input' }}
           </div>
           {% if form.company_name.errors %}
-            <p class="help is-danger">{{ form.company_name.errors }}</p>
+          <p class="help is-danger">{{ form.company_name.errors }}</p>
           {% endif %}
         </div>
         {# CNPJ #}
@@ -25,7 +24,7 @@
             {{ form.cnpj|addclass:'input' }}
           </div>
           {% if form.cnpj.errors %}
-            <p class="help is-danger">{{ form.cnpj.errors }}</p>
+          <p class="help is-danger">{{ form.cnpj.errors }}</p>
           {% endif %}
         </div>
         {# Descrição #}
@@ -35,18 +34,17 @@
             {{ form.description|addtype:'textarea' }}
           </div>
           {% if form.description.errors %}
-            <p class="help is-danger">{{ form.description.errors }}</p>
+          <p class="help is-danger">{{ form.description.errors }}</p>
           {% endif %}
         </div>
-        <h3 class="title"> Informações do Funcionário</h3>
-        {# Nome #}
+        <h3 class="title"> Informações do Funcionário</h3> {# Nome #}
         <div class="field">
           <label class="label">{{ form.name.label }}</label>
           <div class="control">
             {{ form.name|addclass:'input' }}
           </div>
           {% if form.name.errors %}
-            <p class="help is-danger">{{ form.name.errors }}</p>
+          <p class="help is-danger">{{ form.name.errors }}</p>
           {% endif %}
         </div>
         {# Telefone #}
@@ -56,41 +54,34 @@
             {{ form.phone|addclass:'input' }}
           </div>
           {% if form.phone.errors %}
-            <p class="help is-danger">{{ form.phone.errors }}</p>
+          <p class="help is-danger">{{ form.phone.errors }}</p>
           {% endif %}
         </div>
         {# E-Mail #}
         <div class="field">
           <label class="label">{{ form.email.label }}</label>
           <div class="control">
-            {{ form.email|addtype:'email' }}
-            {% if form.email.errors %}
-              <p class="help is-danger">O e-mail digitado é inválido.</p>
+            {{ form.email|addtype:'email' }} {% if form.email.errors %}
+            <p class="help is-danger">O e-mail digitado é inválido.</p>
             {% endif %}
           </div>
         </div>
         {# Nome de Usuário #}
         <div class="field">
-          <label class="label">{{ form.username.label }}</label>
-            {{ form.username|addclass:'input' }}
-          {% if form.username.errors %}
-            <p class="help is-danger">{{ form.username.errors }}</p>
+          <label class="label">{{ form.username.label }}</label> {{ form.username|addclass:'input' }} {% if form.username.errors %}
+          <p class="help is-danger">{{ form.username.errors }}</p>
           {% endif %}
         </div>
         {# Senha 1 #}
         <div class="field">
-          <label class="label">{{ form.password1.label }}</label>
-            {{ form.password1|addclass:'input' }}
-          {% if form.password1.errors %}
-            <p class="help is-danger">{{ form.password1.errors }}</p>
+          <label class="label">{{ form.password1.label }}</label> {{ form.password1|addclass:'input' }} {% if form.password1.errors %}
+          <p class="help is-danger">{{ form.password1.errors }}</p>
           {% endif %}
         </div>
         {# Senha 2 #}
         <div class="field">
-          <label class="label">{{ form.password2.label }}</label>
-            {{ form.password2|addclass:'input' }}
-          {% if form.password2.errors %}
-            <p class="help is-danger">{{ form.password2.errors }}</p>
+          <label class="label">{{ form.password2.label }}</label> {{ form.password2|addclass:'input' }} {% if form.password2.errors %}
+          <p class="help is-danger">{{ form.password2.errors }}</p>
           {% endif %}
         </div>
         <div class="field is-grouped">
